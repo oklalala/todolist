@@ -1,0 +1,13 @@
+<%= form_for @task do |t| %>
+  <%= t.label :name, "Mission" %>
+  <%= t.text_field :name%>
+
+  <%= t.label :date, "Date" %>
+  <%= t.text_field :date%>
+
+  <%= t.label :note, "Note" %>
+  <%= t.text_area :note %>
+
+  <%= t.submit "Update" %>
+
+<% end %>
