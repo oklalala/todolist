@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20171111120902) do
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "checked"
   end
 
 end

@@ -1,12 +1,36 @@
-<ul>
-  <% @tasks.each do |task| %>
-    <li>
-      <%= task.name %>
-      <%= link_to 'Show', task_path(task) %>
-      <%= link_to 'Edit', edit_task_path(task) %>
-      <%= link_to 'Destroy', task_path(task), method: :delete, data: {confirm: "Ready to delete"} %>
-    </li>
-  <% end %>
-</ul>
+<div class="container" class="center-block">
+  <table class="table">
+    <td class="bg-primary"><h1>Tony's Todo</h1></td>
+  </table>
 
-<%= link_to 'New ToDo', new_task_path %> 
+  <div class= "sub-container" class="center-block">
+    <table class="table table-hover">
+      <% @tasks.each do |task| %>
+        <tr>
+          <td>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="checked">
+              </label>
+            </div>
+          </td>
+
+          <td><%= task.name %></td>
+          <td><%= task.date %></td>
+          <td><%= link_to 'Show', task_path(task), class: "btn btn-success" %></td>
+          <td><%= link_to 'Edit', edit_task_path(task), class: "btn btn-primary" %></td>
+          
+          <% if task.date < Date.today %>
+            <td><%= link_to 'Delete', tasks_path(task), data: {confirm: "Sorry, it's overdue."}, class: "btn btn-danger", disabled: "disabled" %></td>
+          <% else %>
+            <td><%= link_to 'Delete', task_path(task), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %></td>
+          <% end %> 
+
+        </tr>
+      <% end %>
+
+    </table>
+  </div>
+
+<%= link_to 'New ToDo', new_task_path, class: "btn btn-success" %> 
+</div>

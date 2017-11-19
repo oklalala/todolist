@@ -1,0 +1,2 @@
+class AddComplete < ApplicationRecord
+end

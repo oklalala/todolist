@@ -1,0 +1,32 @@
+<% if @task.errors.present? %>
+  <ul>
+    <% @task.errors.each do |error, message| %>
+      <li> 
+        <div class="form-group has-warning">
+          <label class="control-label" for="inputWarning1"><%= "#{error.capitalize}  #{message}" %></label>
+        </div></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="form container">
+  <%= form_for @task do |t| %>
+  <div class="form-group">
+    <%= t.label :name, "Mission" %>
+    <%= t.text_field :name, class: "form-control" %>
+  </div> 
+  <div class="form-group">
+    <%= t.label :date, "Date" %>
+    <%= t.text_field :date, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= t.label :note, "Note" %>
+    <%= t.text_area :note, class: "form-control" %>
+  </div>
+  <%= t.submit "Create", class: "btn btn-success" %>
+
+  <% end %>
+  
+</div>
+
+
